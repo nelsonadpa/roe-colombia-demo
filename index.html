@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ROE Colombia — Reporte Obligatorio de Emisiones · demo narrado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#3d7a2a; --green-dark:#2c5a1e; --green-soft:#eaf4e4;
+    --ink:#172510; --paper:#fbfdf9; --blue:#2f5fd0;
+    --shadow:0 18px 50px rgba(23,37,16,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:"DM Sans",system-ui,sans-serif;background:#0e1a09;color:var(--ink);overflow:hidden}
+
+  .stage{position:fixed;inset:0;display:flex;flex-direction:column}
+  #bar{position:absolute;top:0;left:0;height:4px;background:#8cc63f;width:0%;z-index:40;transition:width .45s ease}
+
+  .slide{display:none;position:absolute;inset:0;overflow:hidden}
+  .slide.on{display:flex}
+
+  /* concept slides */
+  .slide.concept{flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    background:linear-gradient(160deg,#132a0b 0%,#1e4212 55%,#2c5a1e 100%);color:#fff;padding:6vh 8vw}
+  .slide.concept .kicker{font-size:clamp(14px,1.6vw,19px);letter-spacing:.22em;text-transform:uppercase;color:#a5d47f;font-weight:700}
+  .slide.concept h1{font-size:clamp(34px,5.4vw,72px);font-weight:900;line-height:1.08;margin:18px 0 14px;max-width:22ch}
+  .slide.concept p.lead{font-size:clamp(16px,2vw,24px);color:#dcecd0;max-width:56ch;line-height:1.5}
+  .bignum{font-size:clamp(70px,13vw,190px);font-weight:900;color:#aef07e;line-height:1;margin:10px 0 4px;font-variant-numeric:tabular-nums}
+  .bignum small{font-size:.32em;font-weight:700;color:#dcecd0}
+
+  /* hero photo slide */
+  .slide.hero{align-items:flex-end;justify-content:flex-start;color:#fff;
+    background:url('assets/shots/hero.png') center/cover no-repeat}
+  .slide.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,5,.88) 0%,rgba(10,22,5,.35) 45%,rgba(10,22,5,.15) 100%)}
+  .slide.hero .box{position:relative;padding:0 7vw 12vh;max-width:900px}
+  .slide.hero .kicker{font-size:clamp(13px,1.5vw,18px);letter-spacing:.22em;text-transform:uppercase;color:#b9e292;font-weight:700}
+  .slide.hero h1{font-size:clamp(36px,5.8vw,78px);font-weight:900;line-height:1.05;margin:14px 0 10px}
+  .slide.hero p{font-size:clamp(15px,1.9vw,22px);color:#e6f2da;max-width:52ch;line-height:1.5}
+
+  /* screenshot slides */
+  .slide.screen{flex-direction:column;align-items:center;justify-content:center;
+    background:radial-gradient(120% 120% at 50% 0%,#f4f9ef 0%,#dfeccf 60%,#c8dfae 100%);padding:5vh 5vw 11vh}
+  .shot{max-width:min(1150px,92vw);max-height:74vh;border-radius:14px;box-shadow:var(--shadow);
+    border:1px solid rgba(23,37,16,.12);object-fit:contain;background:#fff}
+  .shot.tall{object-position:top}
+  .caption{margin-top:2.6vh;display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(23,37,16,.12);
+    border-radius:999px;padding:10px 22px;font-size:clamp(14px,1.6vw,18px);font-weight:700;color:var(--green-dark);box-shadow:0 6px 18px rgba(23,37,16,.08)}
+  .caption .dot{width:10px;height:10px;border-radius:50%;background:#8cc63f;flex:none}
+
+  .step{position:absolute;top:3.4vh;left:5vw;background:var(--green-dark);color:#fff;font-weight:800;
+    border-radius:999px;padding:8px 18px;font-size:clamp(12px,1.4vw,16px);letter-spacing:.06em;box-shadow:0 6px 18px rgba(23,37,16,.25)}
+
+  /* institution chips (final) */
+  .chips{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:3vh}
+  .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#f0f7e8;
+    border-radius:999px;padding:10px 20px;font-size:clamp(12px,1.5vw,16px);font-weight:600}
+
+  /* entrance animation */
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  .slide.on .anim{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+
+  /* narrator + subtitles */
+  .narr{position:fixed;left:50%;transform:translateX(-50%);bottom:86px;z-index:50;display:flex;align-items:center;gap:14px;
+    max-width:min(860px,92vw);background:rgba(14,26,9,.82);backdrop-filter:blur(10px);color:#f2f8ea;
+    border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:12px 20px 12px 12px;box-shadow:0 12px 34px rgba(0,0,0,.35)}
+  .narr .pa{width:52px;height:52px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg,#8cc63f,#3d7a2a);color:#fff;font-weight:900;font-size:15px;letter-spacing:.02em;
+    border:2px solid rgba(255,255,255,.55)}
+  .narr.speaking .pa{box-shadow:0 0 0 0 rgba(140,198,63,.65);animation:pulse 1.6s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 14px rgba(140,198,63,0)}100%{box-shadow:0 0 0 0 rgba(140,198,63,0)}}
+  #subsT{font-size:clamp(13px,1.6vw,17px);line-height:1.45}
+
+  /* controls */
+  .ctrl{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:center;justify-content:center;gap:10px;
+    padding:14px 18px;background:linear-gradient(to top,rgba(10,18,5,.92),rgba(10,18,5,0))}
+  .ctrl button{font-family:inherit;font-weight:700;font-size:14px;border-radius:999px;border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.10);color:#fff;padding:10px 18px;cursor:pointer;backdrop-filter:blur(8px)}
+  .ctrl button:hover{background:rgba(255,255,255,.22)}
+  .ctrl #playBtn{background:#8cc63f;color:#132a0b;border-color:transparent;padding:10px 26px;font-size:15px}
+  .ctrl #playBtn:hover{background:#a2d95c}
+  #counter{color:#cfe3bb;font-size:13px;font-weight:700;min-width:52px;text-align:center;font-variant-numeric:tabular-nums}
+
+  #finale .shot{max-height:52vh}
+  #finale .chips{margin-top:2vh}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div id="bar"></div>
+
+  <!-- 0 · portada -->
+  <section class="slide concept" data-audio="assets/audio/s0.mp3">
+    <div class="kicker anim">Colombia · Ministerio de Ambiente y Desarrollo Sostenible</div>
+    <h1 class="anim" style="animation-delay:.12s">Reporte Obligatorio<br>de Emisiones</h1>
+    <p class="lead anim" style="animation-delay:.24s">De las hojas de cálculo y el papel, a un solo portal en línea. Una gerente ambiental nos cuenta cómo reporta hoy las emisiones de su empresa.</p>
+  </section>
+
+  <!-- 1 · qué es / piloto 2025→2026 -->
+  <section class="slide screen" data-audio="assets/audio/s1.mp3">
+    <div class="step anim">¿Qué es el ROE?</div>
+    <img class="shot anim" src="assets/shots/piloto.png" alt="Portal ROE: pruebe el sitio durante 2025; obligatorio desde 2026">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>2025: pruebe sin compromiso · 2026: reporte obligatorio</div>
+  </section>
+
+  <!-- 2 · umbral -->
+  <section class="slide concept" data-audio="assets/audio/s2.mp3">
+    <div class="kicker anim">¿Quién debe reportar?</div>
+    <div class="bignum anim" style="animation-delay:.12s" data-count="11000">0<small> tCO₂eq / año</small></div>
+    <p class="lead anim" style="animation-delay:.24s">Las empresas que superan este umbral de emisiones deben reportar cada año. Las demás pueden presentar su autodeclaración voluntaria.</p>
+  </section>
+
+  <!-- 3 · el portal -->
+  <section class="slide screen" data-audio="assets/audio/s3.mp3">
+    <div class="step anim">Un solo portal oficial</div>
+    <img class="shot anim" src="assets/shots/hero.png" alt="home-colombia.eregistrations.org — sitio oficial del gobierno de Colombia">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>home-colombia.eregistrations.org</div>
+  </section>
+
+  <!-- 4 · ingreso -->
+  <section class="slide screen" data-audio="assets/audio/s4.mp3">
+    <div class="step anim">Paso 1 · Ingresar</div>
+    <img class="shot anim" src="assets/shots/login.png" alt="Ingreso con correo, NIT o Gov.co">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Con correo, NIT o cuenta Gov.co</div>
+  </section>
+
+  <!-- 5 · mi cuenta -->
+  <section class="slide screen" data-audio="assets/audio/s5.mp3">
+    <div class="step anim">Paso 2 · Mi cuenta</div>
+    <img class="shot anim" src="assets/shots/micuenta.png" alt="Historial de reportes de emisiones GEI">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Historial completo: vigencia, fecha y estado</div>
+  </section>
+
+  <!-- 6 · formulario -->
+  <section class="slide screen" data-audio="assets/audio/s6.mp3">
+    <div class="step anim">Paso 3 · El formulario</div>
+    <img class="shot anim" src="assets/shots/form-inicio.png" alt="Periodo y tipo de reporte">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Vigencia + ¿qué va a reportar?</div>
+  </section>
+
+  <!-- 7 · cascada -->
+  <section class="slide screen" data-audio="assets/audio/s7.mp3">
+    <div class="step anim">Paso 4 · Fuentes de emisión</div>
+    <img class="shot tall anim" src="assets/shots/cascada.png" alt="Cascada: categoría, subcategoría, nivel, subnivel, variable">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Menús en cascada hasta la fuente exacta</div>
+  </section>
+
+  <!-- 8 · cálculo automático -->
+  <section class="slide screen" data-audio="assets/audio/s8.mp3">
+    <div class="step anim">Paso 5 · El sistema calcula</div>
+    <img class="shot anim" src="assets/shots/dato-actividad.png" alt="Dato de actividad en galones; el sistema aplica los factores de emisión oficiales">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Usted da el consumo · el ROE aplica los factores oficiales</div>
+  </section>
+
+  <!-- 9 · resultado + cierre -->
+  <section class="slide screen" data-audio="assets/audio/s9.mp3" id="finale">
+    <div class="step anim">Paso 6 · Resultado y envío</div>
+    <img class="shot anim" src="assets/shots/fuentes-umbral.png" alt="Fuentes guardadas, huella total y verificación del umbral de 11.000 tCO2eq">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Huella total · verificación del umbral · constancia oficial</div>
+    <div class="chips anim" style="animation-delay:.3s">
+      <span class="chip" style="color:#2c5a1e;background:rgba(61,122,42,.10);border-color:rgba(61,122,42,.35)">Ministerio de Ambiente y Desarrollo Sostenible</span>
+      <span class="chip" style="color:#2c5a1e;background:rgba(61,122,42,.10);border-color:rgba(61,122,42,.35)">Reino de los Países Bajos</span>
+      <span class="chip" style="color:#2c5a1e;background:rgba(61,122,42,.10);border-color:rgba(61,122,42,.35)">ONU Comercio y Desarrollo (UNCTAD)</span>
+    </div>
+  </section>
+
+  <!-- narrator + subtitles -->
+  <div class="narr" id="narr">
+    <div class="pa">ROE</div>
+    <div id="subsT"></div>
+  </div>
+
+  <!-- controls -->
+  <div class="ctrl">
+    <button id="firstBtn" title="Inicio">⏮</button>
+    <button id="prevBtn" title="Anterior">←</button>
+    <button id="playBtn">▶ Reproducir</button>
+    <button id="nextBtn" title="Siguiente">→</button>
+    <span id="counter">1 / 10</span>
+  </div>
+</div>
+
+<script>
+const NARR = [
+  "Durante años, medir y reportar las emisiones de mi empresa fue un trámite de papeles, correos y hojas de cálculo. Hoy Colombia tiene otra manera de hacerlo. Le presento el ROE: el Reporte Obligatorio de Emisiones del Ministerio de Ambiente.",
+  "El ROE es el registro donde las empresas reportamos cada año nuestras emisiones de gases de efecto invernadero. Durante 2025 el sitio está abierto en modo de prueba, sin compromiso. Desde 2026, reportar será obligatorio.",
+  "¿Quién debe reportar? Toda empresa cuyas emisiones superen las 11.000 toneladas de CO₂ equivalente al año. Si mi empresa no llega al umbral, igual puedo presentar mi autodeclaración voluntaria.",
+  "Todo pasa en un solo lugar. Un sitio oficial del gobierno de Colombia, del Ministerio de Ambiente y Desarrollo Sostenible, con asistencia telefónica si la necesito.",
+  "Ingreso con mi correo o mi NIT, o directamente con mi cuenta Gov.co. Un clic en «Inicie su reporte», y ya estoy adentro.",
+  "En «Mi cuenta» veo el historial completo de mis reportes: borradores y enviados, cada uno con su vigencia, su fecha y su estado. Nada se pierde.",
+  "El formulario me guía paso a paso. Elijo la vigencia y qué voy a reportar: solo emisiones, o emisiones y absorciones.",
+  "Registro cada fuente de emisión con menús que se abren en cascada: categoría, subcategoría, nivel, subnivel y variable. Por ejemplo: emisión directa, por combustión, en fuentes estacionarias, con diésel.",
+  "Yo solo indico mi dato de actividad: cuántos galones consumí en el año. El sistema trae los factores de emisión oficiales de Colombia y calcula por mí. Sin fórmulas, sin hojas de cálculo.",
+  "Al final veo mi huella de carbono total, y sé de inmediato si supero el nivel de reporte obligatorio. Envío mi reporte y recibo mi constancia oficial. Esto es el ROE: reportar emisiones, fácil y en línea. Una iniciativa del Ministerio de Ambiente, con el apoyo del Reino de los Países Bajos y de ONU Comercio y Desarrollo."
+];
+
+const slides=[...document.querySelectorAll('.slide')];
+const bar=document.getElementById('bar'), subsT=document.getElementById('subsT'),
+      counter=document.getElementById('counter'), narr=document.getElementById('narr'),
+      playBtn=document.getElementById('playBtn');
+let i=0, playing=false, audio=null, timer=null;
+
+const setSpeak=on=>narr.classList.toggle('speaking',on);
+
+function countUpIn(slide){
+  slide.querySelectorAll('[data-count]').forEach(el=>{
+    const target=+el.dataset.count, small=el.querySelector('small');
+    const t0=performance.now(), dur=1400;
+    (function tick(t){
+      const k=Math.min(1,(t-t0)/dur), v=Math.round(target*(1-Math.pow(1-k,3)));
+      el.childNodes[0].nodeValue=v.toLocaleString('es-CO');
+      if(k<1) requestAnimationFrame(tick);
+    })(t0);
+    if(small) el.appendChild(small);
+  });
+}
+
+function paint(){
+  slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+  counter.textContent=(i+1)+' / '+slides.length;
+  bar.style.width=((i+1)/slides.length*100)+'%';
+  subsT.textContent=NARR[i]||'';
+  countUpIn(slides[i]);
+}
+function stopSeg(){ if(audio){audio.pause();audio=null;} clearTimeout(timer); setSpeak(false); }
+function speak(){
+  stopSeg();
+  const src=slides[i].dataset.audio; if(!src) return;
+  audio=new Audio(src);
+  audio.preservesPitch=true; audio.playbackRate=1.08;
+  audio.onended=()=>{ setSpeak(false); if(playing) adv(); };
+  audio.play().then(()=>setSpeak(true))
+    .catch(()=>{ if(playing) timer=setTimeout(()=>playing&&adv(),7000); });
+}
+function go(n){ i=Math.max(0,Math.min(slides.length-1,n)); paint(); playing?speak():stopSeg(); }
+function adv(){ if(i<slides.length-1) go(i+1); else {playing=false; setPlayBtn(); stopSeg();} }
+function setPlayBtn(){ playBtn.textContent=playing?'⏸ Pausa':'▶ Reproducir'; }
+function play(){ playing=!playing; setPlayBtn(); playing?speak():stopSeg(); }
+
+playBtn.onclick=play;
+document.getElementById('prevBtn').onclick=()=>go(i-1);
+document.getElementById('nextBtn').onclick=()=>go(i+1);
+document.getElementById('firstBtn').onclick=()=>go(0);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight') go(i+1);
+  else if(e.key==='ArrowLeft') go(i-1);
+  else if(e.key===' '){ e.preventDefault(); play(); }
+});
+paint(); setPlayBtn();
+</script>
+</body>
+</html>
