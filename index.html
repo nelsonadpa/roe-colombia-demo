@@ -83,8 +83,49 @@
   .ctrl #playBtn:hover{background:#a2d95c}
   #counter{color:#cfe3bb;font-size:13px;font-weight:700;min-width:52px;text-align:center;font-variant-numeric:tabular-nums}
 
-  #finale .shot{max-height:52vh}
-  #finale .chips{margin-top:2vh}
+  /* results grid (slide 9) */
+  .gridcard{width:min(1100px,92vw);background:#fff;border-radius:16px;box-shadow:var(--shadow);
+    border:1px solid rgba(23,37,16,.12);overflow:hidden}
+  .gridcard .gh{padding:16px 24px;border-bottom:1px solid #e7efdd;font-weight:800;color:var(--green-dark);font-size:clamp(15px,1.8vw,20px)}
+  .gridcard table{width:100%;border-collapse:collapse;font-size:clamp(11px,1.25vw,15px)}
+  .gridcard th{background:#f2f7ec;color:#4a5d3c;text-align:left;font-weight:700;padding:10px 14px;border-bottom:1px solid #e1ead4}
+  .gridcard th.num,.gridcard td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .gridcard td{padding:11px 14px;border-bottom:1px solid #eef4e6;color:#22331a}
+  .gridcard tr.total td{font-weight:800;background:#fbfdf8;border-top:2px solid #d8e6c6}
+  .huella{display:flex;align-items:center;gap:16px;padding:14px 24px;background:#eaf4e4}
+  .huella .n{font-size:clamp(20px,2.8vw,32px);font-weight:900;color:var(--green-dark);white-space:nowrap}
+  .huella .t{font-size:clamp(12px,1.4vw,15px);color:#3c4f2e;line-height:1.35}
+  .badge-alert{display:inline-block;background:#b3541e;color:#fff;border-radius:6px;padding:2px 10px;font-weight:800;font-size:.85em;margin-left:6px}
+
+  /* certificate (slide 10) */
+  .slide.cert{flex-direction:column;align-items:center;justify-content:center;
+    background:linear-gradient(160deg,#132a0b 0%,#1e4212 55%,#2c5a1e 100%);padding:4vh 5vw 12vh}
+  .certcard{position:relative;width:min(880px,94vw);background:#fff;border-radius:18px;overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,.45)}
+  .certcard .band{height:10px;background:linear-gradient(90deg,#fcd116 0 33%,#003893 33% 66%,#ce1126 66% 100%)}
+  .certhead{display:flex;align-items:center;justify-content:space-between;padding:22px 34px 14px;border-bottom:1px solid #ecf2e4}
+  .certhead .min{font-weight:900;color:var(--green-dark);font-size:clamp(15px,1.9vw,21px);line-height:1.15}
+  .certhead .min small{display:block;font-weight:600;color:#69805a;font-size:.62em;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+  .sello{width:74px;height:74px;border-radius:50%;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 32% 28%,#8cc63f,#3d7a2a);color:#fff;font-weight:900;font-size:15px;letter-spacing:.04em;
+    box-shadow:inset 0 0 0 4px rgba(255,255,255,.35), 0 6px 16px rgba(44,90,30,.35)}
+  .sello small{font-weight:700;font-size:8.5px;opacity:.9;letter-spacing:.14em}
+  .certtitle{text-align:center;padding:20px 34px 6px}
+  .certtitle .k{font-size:11px;letter-spacing:.3em;color:#7d926d;font-weight:700;text-transform:uppercase}
+  .certtitle h2{font-size:clamp(19px,2.6vw,30px);font-weight:900;color:#1c2a12;margin-top:6px}
+  .certbody{display:grid;grid-template-columns:1fr auto;gap:20px;padding:16px 34px 24px;align-items:center}
+  .certrows{display:grid;grid-template-columns:auto 1fr;gap:7px 20px;font-size:clamp(12px,1.5vw,15.5px)}
+  .certrows dt{color:#7d926d;font-weight:600;white-space:nowrap}
+  .certrows dd{color:#1c2a12;font-weight:800}
+  .certrows dd.ok{color:var(--green);display:flex;align-items:center;gap:8px}
+  .certrows dd.ok::before{content:"✓";display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--green);
+    color:#fff;align-items:center;justify-content:center;font-size:12px}
+  .qrbox{text-align:center}
+  .qrbox img{width:clamp(110px,14vw,150px);display:block;border:1px solid #e3ecd8;border-radius:10px;padding:6px;background:#fff}
+  .qrbox .v{font-size:10.5px;color:#7d926d;max-width:160px;margin:8px auto 0;line-height:1.35}
+  .qrbox .code{font-family:ui-monospace,monospace;font-size:11px;color:#3c4f2e;font-weight:700;letter-spacing:.06em;margin-top:4px}
+  .certfoot{padding:12px 34px;background:#f7faf3;border-top:1px solid #ecf2e4;display:flex;justify-content:space-between;
+    font-size:10.5px;color:#8aa07a;letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -154,15 +195,68 @@
     <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Usted da el consumo · el ROE aplica los factores oficiales</div>
   </section>
 
-  <!-- 9 · resultado + cierre -->
-  <section class="slide screen" data-audio="assets/audio/s9.mp3" id="finale">
-    <div class="step anim">Paso 6 · Resultado y envío</div>
-    <img class="shot anim" src="assets/shots/fuentes-umbral.png" alt="Fuentes guardadas, huella total y verificación del umbral de 11.000 tCO2eq">
-    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Huella total · verificación del umbral · constancia oficial</div>
-    <div class="chips anim" style="animation-delay:.3s">
-      <span class="chip" style="color:#2c5a1e;background:rgba(61,122,42,.10);border-color:rgba(61,122,42,.35)">Ministerio de Ambiente y Desarrollo Sostenible</span>
-      <span class="chip" style="color:#2c5a1e;background:rgba(61,122,42,.10);border-color:rgba(61,122,42,.35)">Reino de los Países Bajos</span>
-      <span class="chip" style="color:#2c5a1e;background:rgba(61,122,42,.10);border-color:rgba(61,122,42,.35)">ONU Comercio y Desarrollo (UNCTAD)</span>
+  <!-- 9 · resultado: grid con números -->
+  <section class="slide screen" data-audio="assets/audio/s9.mp3">
+    <div class="step anim">Paso 6 · Resultado del cálculo</div>
+    <div class="gridcard anim">
+      <div class="gh">Reportes Emisiones GEI · Vigencia 2025</div>
+      <table>
+        <thead><tr>
+          <th>Subcategoría</th><th>Nivel</th><th>Método de cálculo</th><th>Variable</th>
+          <th class="num">Biogénicas CO₂</th><th class="num">Directas</th><th class="num">Indirectas</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>Combustión</td><td>Fuentes Estacionarias</td><td>Factor de emisión</td><td>Diésel o ACPM (sin mezcla)</td>
+            <td class="num">0,0</td><td class="num">4.820,5</td><td class="num">—</td></tr>
+          <tr><td>Combustión</td><td>Fuentes Móviles</td><td>Factor de emisión</td><td>Gasolina Motor E10</td>
+            <td class="num">12,4</td><td class="num">1.240,2</td><td class="num">—</td></tr>
+          <tr><td>Adquisición de Electricidad</td><td>Energía Eléctrica Comprada</td><td>Factor de emisión</td><td>Electricidad adquirida</td>
+            <td class="num">0,0</td><td class="num">—</td><td class="num">8.460,0</td></tr>
+          <tr class="total"><td colspan="4">Totales (tCO₂eq)</td>
+            <td class="num">12,4</td><td class="num">6.060,7</td><td class="num">8.460,0</td></tr>
+        </tbody>
+      </table>
+      <div class="huella anim" style="animation-delay:.25s">
+        <div class="n">14.520,7 tCO₂eq</div>
+        <div class="t"><strong>Sus emisiones superan el Nivel de Reporte Obligatorio</strong> (11.000 tCO₂eq).
+          Debe enviar su reporte anual de emisiones GEI.<span class="badge-alert">Reporte obligatorio</span></div>
+      </div>
+    </div>
+    <div class="caption anim" style="animation-delay:.35s"><span class="dot"></span>El sistema consolida directas · indirectas · biogénicas</div>
+  </section>
+
+  <!-- 10 · constancia con QR + cierre -->
+  <section class="slide cert" data-audio="assets/audio/s10.mp3" id="finale">
+    <div class="certcard anim">
+      <div class="band"></div>
+      <div class="certhead">
+        <div class="min">Ministerio de Ambiente y Desarrollo Sostenible<small>República de Colombia · Gov.co</small></div>
+        <div class="sello">ROE<small>2025 ✓</small></div>
+      </div>
+      <div class="certtitle">
+        <div class="k">Constancia oficial</div>
+        <h2>Reporte Obligatorio de Emisiones GEI</h2>
+      </div>
+      <div class="certbody">
+        <dl class="certrows">
+          <dt>Empresa</dt><dd>MANUFACTURAS EL ROBLE SAS</dd>
+          <dt>NIT</dt><dd>860.002.190</dd>
+          <dt>Radicado</dt><dd>ER-6030</dd>
+          <dt>Vigencia</dt><dd>2025</dd>
+          <dt>Huella de carbono total</dt><dd>14.520,7 tCO₂eq</dd>
+          <dt>Fecha de presentación</dt><dd>8 de julio de 2026</dd>
+          <dt>Estado</dt><dd class="ok">Reporte presentado</dd>
+        </dl>
+        <div class="qrbox">
+          <img src="assets/shots/qr.png" alt="Código QR de verificación">
+          <div class="v">Verifique la autenticidad de este documento escaneando el código QR</div>
+          <div class="code">CO-ROE-2025-ER6030</div>
+        </div>
+      </div>
+      <div class="certfoot">
+        <span>home-colombia.eregistrations.org</span>
+        <span>Ministerio de Ambiente · Reino de los Países Bajos · ONU Comercio y Desarrollo (UNCTAD)</span>
+      </div>
     </div>
   </section>
 
@@ -193,7 +287,8 @@ const NARR = [
   "El formulario me guía paso a paso. Elijo la vigencia y qué voy a reportar: solo emisiones, o emisiones y absorciones.",
   "Registro cada fuente de emisión con menús que se abren en cascada: categoría, subcategoría, nivel, subnivel y variable. Por ejemplo: emisión directa, por combustión, en fuentes estacionarias, con diésel.",
   "Yo solo indico mi dato de actividad: cuántos galones consumí en el año. El sistema trae los factores de emisión oficiales de Colombia y calcula por mí. Sin fórmulas, sin hojas de cálculo.",
-  "Al final veo mi huella de carbono total, y sé de inmediato si supero el nivel de reporte obligatorio. Envío mi reporte y recibo mi constancia oficial. Esto es el ROE: reportar emisiones, fácil y en línea. Una iniciativa del Ministerio de Ambiente, con el apoyo del Reino de los Países Bajos y de ONU Comercio y Desarrollo."
+  "Al guardar mis fuentes, el sistema consolida todo el cálculo: emisiones directas, indirectas y biogénicas. Mi huella total: 14.520 toneladas de CO₂ equivalente. Supero el umbral de 11.000. Este año, mi empresa debe reportar.",
+  "Envío mi reporte, y al instante recibo mi constancia oficial, con un código QR para verificar su autenticidad en línea. Esto es el ROE: reportar emisiones, fácil y en línea. Una iniciativa del Ministerio de Ambiente, con el apoyo del Reino de los Países Bajos y de ONU Comercio y Desarrollo."
 ];
 
 const slides=[...document.querySelectorAll('.slide')];

@@ -11,7 +11,7 @@ Sigue el patrón del demo [Easy Accounts Uganda](https://github.com/unctad-ai/ug
 un HTML estático, un clip de narración por slide, y el audio es el reloj — cada slide
 dura exactamente lo que dura su narración y avanza al terminar.
 
-## La historia (10 slides)
+## La historia (11 slides)
 
 1. Portada — de las hojas de cálculo a un portal en línea
 2. Qué es el ROE — 2025 en modo prueba, obligatorio desde 2026
@@ -22,7 +22,8 @@ dura exactamente lo que dura su narración y avanza al terminar.
 7. El formulario paso a paso — vigencia y tipo de reporte
 8. Fuentes de emisión — menús en cascada hasta la fuente exacta
 9. El sistema calcula — dato de actividad + factores de emisión oficiales
-10. Resultado — huella total, verificación del umbral y constancia oficial
+10. Resultado — grid consolidado con las emisiones calculadas (14.520,7 tCO₂eq, supera el umbral)
+11. Constancia oficial con código QR de verificación
 
 ## Voz
 
