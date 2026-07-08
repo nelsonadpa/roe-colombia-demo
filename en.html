@@ -123,6 +123,18 @@
   table.gases td{padding:6px 8px;border:1px solid #e9f0df;text-align:center}
   .certfoot{padding:10px 36px;background:#f7faf3;border-top:1px solid #ecf2e4;display:flex;justify-content:space-between;gap:10px;
     font-size:10px;color:#8aa07a;letter-spacing:.04em;flex-wrap:wrap}
+
+  /* corner heartbeat — reacts to the live voice */
+  .beat{position:fixed;right:18px;bottom:96px;z-index:55;display:flex;align-items:center;gap:10px;
+    background:rgba(14,26,9,.75);border:1px solid rgba(255,255,255,.18);border-radius:999px;
+    padding:8px 14px 8px 8px;backdrop-filter:blur(8px);opacity:0;transition:opacity .35s;pointer-events:none}
+  .beat.on{opacity:1}
+  .beat .pa2{width:38px;height:38px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg,#8cc63f,#3d7a2a);color:#fff;font-weight:900;font-size:11px;
+    border:2px solid rgba(255,255,255,.5);transform:scale(var(--pump,1));transition:transform .09s}
+  .beat .eq{display:flex;gap:3px;align-items:center;height:26px}
+  .beat .eq span{width:4px;height:22px;border-radius:2px;background:#8cc63f;transform-origin:center;
+    transform:scaleY(.18);transition:transform .09s}
 </style>
 </head>
 <body>
@@ -141,7 +153,7 @@
     <div class="veil"></div>
     <div class="kicker anim">Colombia · Ministry of Environment and Sustainable Development</div>
     <h1 class="anim" style="animation-delay:.12s">Mandatory Emissions<br>Report (ROE)</h1>
-    <p class="lead anim" style="animation-delay:.24s">From spreadsheets and paper to a single online portal. An environmental manager shows how she reports her company's emissions today.</p>
+    <p class="lead anim" style="animation-delay:.24s">Colombia's Climate Action Law (Law 2169 of 2021) makes GHG emissions reporting mandatory. This is how it's done — on a single online portal.</p>
   </section>
 
   <!-- 1 · what is ROE / 2025→2026 -->
@@ -277,6 +289,12 @@
     <div id="subsT"></div>
   </div>
 
+  <!-- corner heartbeat (audio-reactive) -->
+  <div class="beat" id="beat">
+    <div class="pa2">ROE</div>
+    <div class="eq"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
   <!-- controls -->
   <div class="ctrl">
     <button id="firstBtn" title="Start">⏮</button>
@@ -289,7 +307,7 @@
 
 <script>
 const NARR = [
-  "For years, measuring and reporting my company's emissions meant paperwork, emails, and spreadsheets. Today, Colombia has a better way. Meet the ROE: the Mandatory Emissions Report of the Ministry of Environment.",
+  "Calculating my company's carbon footprint always meant consultants, emails, and spreadsheets. Now Colombia's Climate Action Law — Law 2169 of 2021 — makes emissions reporting mandatory. And Colombia made it simple. Meet the ROE: the Mandatory Emissions Report platform of the Ministry of Environment.",
   "The ROE is the registry where companies report their greenhouse gas emissions every year. During 2025, the site is open in trial mode, with no obligation. From 2026, reporting becomes mandatory.",
   "Who must report? Every company whose emissions exceed 11,000 tonnes of CO₂ equivalent per year. And if my company is below the threshold, I can still file a voluntary self-declaration.",
   "Everything happens in one place. An official website of the Government of Colombia, run by the Ministry of Environment and Sustainable Development, with phone assistance if I need it.",
@@ -308,7 +326,35 @@ const bar=document.getElementById('bar'), subsT=document.getElementById('subsT')
       playBtn=document.getElementById('playBtn');
 let i=0, playing=false, audio=null, timer=null;
 
-const setSpeak=on=>narr.classList.toggle('speaking',on);
+const beat=document.getElementById('beat');
+const setSpeak=on=>{ narr.classList.toggle('speaking',on); beat.classList.toggle('on',on); };
+
+/* corner heartbeat: analyse the live voice and pump avatar + bars */
+let actx=null, analyser=null, beatRAF=null;
+const eqBars=[...document.querySelectorAll('#beat .eq span')];
+function wireBeat(a){
+  try{
+    if(!actx){
+      actx=new (window.AudioContext||window.webkitAudioContext)();
+      analyser=actx.createAnalyser(); analyser.fftSize=64; analyser.connect(actx.destination);
+    }
+    actx.resume();
+    actx.createMediaElementSource(a).connect(analyser);
+    if(!beatRAF){
+      const d=new Uint8Array(analyser.frequencyBinCount);
+      (function f(){
+        beatRAF=requestAnimationFrame(f);
+        analyser.getByteFrequencyData(d);
+        const v=d.slice(1,11).reduce((s,x)=>s+x,0)/10/255;
+        eqBars.forEach((b,k)=>{
+          const e=Math.max(.15,Math.min(1, v*1.9 + Math.sin(performance.now()/85+k*1.4)*.12));
+          b.style.transform='scaleY('+e.toFixed(2)+')';
+        });
+        beat.style.setProperty('--pump',(1+v*.22).toFixed(3));
+      })();
+    }
+  }catch(e){ /* WebAudio blocked → static pill, still pulses via .on */ }
+}
 
 function countUpIn(slide){
   slide.querySelectorAll('[data-count]').forEach(el=>{
@@ -337,7 +383,9 @@ function speak(){
   stopSeg();
   const src=slides[i].dataset.audio; if(!src) return;
   audio=new Audio(src);
+  audio.crossOrigin='anonymous';
   audio.preservesPitch=true; audio.playbackRate=1.08;
+  wireBeat(audio);
   audio.onended=()=>{ setSpeak(false); if(playing) adv(); };
   audio.play().then(()=>setSpeak(true))
     .catch(()=>{ if(playing) timer=setTimeout(()=>playing&&adv(),7000); });
