@@ -5,7 +5,10 @@ Presentación auto-reproducible del **Reporte Obligatorio de Emisiones (ROE)** d
 gerente ambiental que reporta las emisiones de su empresa en el portal
 [home-colombia.eregistrations.org](https://home-colombia.eregistrations.org/).
 
-**▶ Ver en vivo: https://nelsonadpa.github.io/roe-colombia-demo/**
+**▶ Ver en vivo (español): https://nelsonadpa.github.io/roe-colombia-demo/**
+**▶ Watch live (English): https://nelsonadpa.github.io/roe-colombia-demo/en.html**
+
+Ambas versiones llevan un botón ES/EN arriba a la derecha para cambiar de idioma.
 
 Sigue el patrón del demo [Easy Accounts Uganda](https://github.com/unctad-ai/uganda-demo):
 un HTML estático, un clip de narración por slide, y el audio es el reloj — cada slide
@@ -27,9 +30,10 @@ dura exactamente lo que dura su narración y avanza al terminar.
 
 ## Voz
 
-Narración generada con Microsoft Edge neural TTS, voz colombiana
-**`es-CO-SalomeNeural`** (una voz femenina de Colombia), un MP3 por slide
-(`assets/audio/s0..s9.mp3`).
+Narración generada con Microsoft Edge neural TTS, un MP3 por slide:
+
+- **Español:** voz colombiana **`es-CO-SalomeNeural`** (`assets/audio/s0..s10.mp3`)
+- **English:** voz **`en-US-AvaNeural`** (`assets/audio/en_s0..en_s10.mp3`)
 
 Para regenerar un clip:
 

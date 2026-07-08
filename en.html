@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ROE Colombia — Reporte Obligatorio de Emisiones · demo narrado</title>
+<title>ROE Colombia — Mandatory Emissions Report · narrated demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,900&display=swap" rel="stylesheet">
 <style>
@@ -36,15 +36,6 @@
   .bignum{font-size:clamp(70px,13vw,190px);font-weight:900;color:#aef07e;line-height:1;margin:10px 0 4px;font-variant-numeric:tabular-nums}
   .bignum small{font-size:.32em;font-weight:700;color:#dcecd0}
 
-  /* hero photo slide */
-  .slide.hero{align-items:flex-end;justify-content:flex-start;color:#fff;
-    background:url('assets/shots/hero.png') center/cover no-repeat}
-  .slide.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,5,.88) 0%,rgba(10,22,5,.35) 45%,rgba(10,22,5,.15) 100%)}
-  .slide.hero .box{position:relative;padding:0 7vw 12vh;max-width:900px}
-  .slide.hero .kicker{font-size:clamp(13px,1.5vw,18px);letter-spacing:.22em;text-transform:uppercase;color:#b9e292;font-weight:700}
-  .slide.hero h1{font-size:clamp(36px,5.8vw,78px);font-weight:900;line-height:1.05;margin:14px 0 10px}
-  .slide.hero p{font-size:clamp(15px,1.9vw,22px);color:#e6f2da;max-width:52ch;line-height:1.5}
-
   /* screenshot slides */
   .slide.screen{flex-direction:column;align-items:center;justify-content:center;
     background:radial-gradient(120% 120% at 50% 0%,#f4f9ef 0%,#dfeccf 60%,#c8dfae 100%);padding:5vh 5vw 11vh}
@@ -57,11 +48,6 @@
 
   .step{position:absolute;top:3.4vh;left:5vw;background:var(--green-dark);color:#fff;font-weight:800;
     border-radius:999px;padding:8px 18px;font-size:clamp(12px,1.4vw,16px);letter-spacing:.06em;box-shadow:0 6px 18px rgba(23,37,16,.25)}
-
-  /* institution chips (final) */
-  .chips{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:3vh}
-  .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#f0f7e8;
-    border-radius:999px;padding:10px 20px;font-size:clamp(12px,1.5vw,16px);font-weight:600}
 
   /* entrance animation */
   @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
@@ -135,138 +121,138 @@
 <body>
 <div class="stage">
   <div id="bar"></div>
-  <a class="lang" href="en.html" title="View in English">EN</a>
+  <a class="lang" href="./" title="Ver en español">ES</a>
 
-  <!-- 0 · portada -->
-  <section class="slide concept" data-audio="assets/audio/s0.mp3">
-    <div class="kicker anim">Colombia · Ministerio de Ambiente y Desarrollo Sostenible</div>
-    <h1 class="anim" style="animation-delay:.12s">Reporte Obligatorio<br>de Emisiones</h1>
-    <p class="lead anim" style="animation-delay:.24s">De las hojas de cálculo y el papel, a un solo portal en línea. Una gerente ambiental nos cuenta cómo reporta hoy las emisiones de su empresa.</p>
+  <!-- 0 · cover -->
+  <section class="slide concept" data-audio="assets/audio/en_s0.mp3">
+    <div class="kicker anim">Colombia · Ministry of Environment and Sustainable Development</div>
+    <h1 class="anim" style="animation-delay:.12s">Mandatory Emissions<br>Report (ROE)</h1>
+    <p class="lead anim" style="animation-delay:.24s">From spreadsheets and paper to a single online portal. An environmental manager shows how she reports her company's emissions today.</p>
   </section>
 
-  <!-- 1 · qué es / piloto 2025→2026 -->
-  <section class="slide screen" data-audio="assets/audio/s1.mp3">
-    <div class="step anim">¿Qué es el ROE?</div>
-    <img class="shot anim" src="assets/shots/piloto.png" alt="Portal ROE: pruebe el sitio durante 2025; obligatorio desde 2026">
-    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>2025: pruebe sin compromiso · 2026: reporte obligatorio</div>
+  <!-- 1 · what is ROE / 2025→2026 -->
+  <section class="slide screen" data-audio="assets/audio/en_s1.mp3">
+    <div class="step anim">What is the ROE?</div>
+    <img class="shot anim" src="assets/shots/piloto.png" alt="ROE portal: try the site during 2025; mandatory from 2026">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>2025: free trial · 2026: reporting becomes mandatory</div>
   </section>
 
-  <!-- 2 · umbral -->
-  <section class="slide concept" data-audio="assets/audio/s2.mp3">
-    <div class="kicker anim">¿Quién debe reportar?</div>
-    <div class="bignum anim" style="animation-delay:.12s" data-count="11000">0<small> tCO₂eq / año</small></div>
-    <p class="lead anim" style="animation-delay:.24s">Las empresas que superan este umbral de emisiones deben reportar cada año. Las demás pueden presentar su autodeclaración voluntaria.</p>
+  <!-- 2 · threshold -->
+  <section class="slide concept" data-audio="assets/audio/en_s2.mp3">
+    <div class="kicker anim">Who must report?</div>
+    <div class="bignum anim" style="animation-delay:.12s" data-count="11000">0<small> tCO₂eq / year</small></div>
+    <p class="lead anim" style="animation-delay:.24s">Companies above this emissions threshold must report every year. Everyone else can file a voluntary self-declaration.</p>
   </section>
 
-  <!-- 3 · el portal -->
-  <section class="slide screen" data-audio="assets/audio/s3.mp3">
-    <div class="step anim">Un solo portal oficial</div>
-    <img class="shot anim" src="assets/shots/hero.png" alt="home-colombia.eregistrations.org — sitio oficial del gobierno de Colombia">
+  <!-- 3 · the portal -->
+  <section class="slide screen" data-audio="assets/audio/en_s3.mp3">
+    <div class="step anim">One official portal</div>
+    <img class="shot anim" src="assets/shots/hero.png" alt="home-colombia.eregistrations.org — official website of the Government of Colombia">
     <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>home-colombia.eregistrations.org</div>
   </section>
 
-  <!-- 4 · ingreso -->
-  <section class="slide screen" data-audio="assets/audio/s4.mp3">
-    <div class="step anim">Paso 1 · Ingresar</div>
-    <img class="shot anim" src="assets/shots/login.png" alt="Ingreso con correo, NIT o Gov.co">
-    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Con correo, NIT o cuenta Gov.co</div>
+  <!-- 4 · sign in -->
+  <section class="slide screen" data-audio="assets/audio/en_s4.mp3">
+    <div class="step anim">Step 1 · Sign in</div>
+    <img class="shot anim" src="assets/shots/login.png" alt="Sign in with email, tax ID or Gov.co">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>With email, tax ID (NIT) or a Gov.co account</div>
   </section>
 
-  <!-- 5 · mi cuenta -->
-  <section class="slide screen" data-audio="assets/audio/s5.mp3">
-    <div class="step anim">Paso 2 · Mi cuenta</div>
-    <img class="shot anim" src="assets/shots/micuenta.png" alt="Historial de reportes de emisiones GEI">
-    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Historial completo: vigencia, fecha y estado</div>
+  <!-- 5 · my account -->
+  <section class="slide screen" data-audio="assets/audio/en_s5.mp3">
+    <div class="step anim">Step 2 · My account</div>
+    <img class="shot anim" src="assets/shots/micuenta.png" alt="GHG emissions report history">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Full history: reporting year, date and status</div>
   </section>
 
-  <!-- 6 · formulario -->
-  <section class="slide screen" data-audio="assets/audio/s6.mp3">
-    <div class="step anim">Paso 3 · El formulario</div>
-    <img class="shot anim" src="assets/shots/form-inicio.png" alt="Periodo y tipo de reporte">
-    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Vigencia + ¿qué va a reportar?</div>
+  <!-- 6 · the form -->
+  <section class="slide screen" data-audio="assets/audio/en_s6.mp3">
+    <div class="step anim">Step 3 · The form</div>
+    <img class="shot anim" src="assets/shots/form-inicio.png" alt="Reporting period and type">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Reporting year + what will you report?</div>
   </section>
 
-  <!-- 7 · cascada -->
-  <section class="slide screen" data-audio="assets/audio/s7.mp3">
-    <div class="step anim">Paso 4 · Fuentes de emisión</div>
-    <img class="shot tall anim" src="assets/shots/cascada.png" alt="Cascada: categoría, subcategoría, nivel, subnivel, variable">
-    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Menús en cascada hasta la fuente exacta</div>
+  <!-- 7 · cascade -->
+  <section class="slide screen" data-audio="assets/audio/en_s7.mp3">
+    <div class="step anim">Step 4 · Emission sources</div>
+    <img class="shot tall anim" src="assets/shots/cascada.png" alt="Cascade: category, subcategory, level, sublevel, variable">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Cascading menus down to the exact source</div>
   </section>
 
-  <!-- 8 · cálculo automático -->
-  <section class="slide screen" data-audio="assets/audio/s8.mp3">
-    <div class="step anim">Paso 5 · El sistema calcula</div>
-    <img class="shot anim" src="assets/shots/dato-actividad.png" alt="Dato de actividad en galones; el sistema aplica los factores de emisión oficiales">
-    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>Usted da el consumo · el ROE aplica los factores oficiales</div>
+  <!-- 8 · automatic calculation -->
+  <section class="slide screen" data-audio="assets/audio/en_s8.mp3">
+    <div class="step anim">Step 5 · The system calculates</div>
+    <img class="shot anim" src="assets/shots/dato-actividad.png" alt="Activity data in gallons; the system applies the official emission factors">
+    <div class="caption anim" style="animation-delay:.15s"><span class="dot"></span>You give the consumption · the ROE applies the official factors</div>
   </section>
 
-  <!-- 9 · resultado: grid con números -->
-  <section class="slide screen" data-audio="assets/audio/s9.mp3">
-    <div class="step anim">Paso 6 · Resultado del cálculo</div>
+  <!-- 9 · results grid -->
+  <section class="slide screen" data-audio="assets/audio/en_s9.mp3">
+    <div class="step anim">Step 6 · Calculation results</div>
     <div class="gridcard anim">
-      <div class="gh">Reportes Emisiones GEI · Vigencia 2025</div>
+      <div class="gh">GHG Emissions Reports · Year 2025</div>
       <table>
         <thead><tr>
-          <th>Subcategoría</th><th>Nivel</th><th>Método de cálculo</th><th>Variable</th>
-          <th class="num">Biogénicas CO₂</th><th class="num">Directas</th><th class="num">Indirectas</th>
+          <th>Subcategory</th><th>Level</th><th>Calculation method</th><th>Variable</th>
+          <th class="num">Biogenic CO₂</th><th class="num">Direct</th><th class="num">Indirect</th>
         </tr></thead>
         <tbody>
-          <tr><td>Combustión</td><td>Fuentes Estacionarias</td><td>Factor de emisión</td><td>Diésel o ACPM (sin mezcla)</td>
-            <td class="num">0,0</td><td class="num">18.240,5</td><td class="num">—</td></tr>
-          <tr><td>Combustión</td><td>Fuentes Móviles</td><td>Factor de emisión</td><td>Gasolina Motor E10</td>
-            <td class="num">45,8</td><td class="num">3.980,2</td><td class="num">—</td></tr>
-          <tr><td>Adquisición de Electricidad</td><td>Energía Eléctrica Comprada</td><td>Factor de emisión</td><td>Electricidad adquirida</td>
-            <td class="num">0,0</td><td class="num">—</td><td class="num">26.310,0</td></tr>
-          <tr class="total"><td colspan="4">Totales (tCO₂eq)</td>
-            <td class="num">45,8</td><td class="num">22.220,7</td><td class="num">26.310,0</td></tr>
+          <tr><td>Combustion</td><td>Stationary sources</td><td>Emission factor</td><td>Diesel (no biodiesel blend)</td>
+            <td class="num">0.0</td><td class="num">18,240.5</td><td class="num">—</td></tr>
+          <tr><td>Combustion</td><td>Mobile sources</td><td>Emission factor</td><td>Motor gasoline E10</td>
+            <td class="num">45.8</td><td class="num">3,980.2</td><td class="num">—</td></tr>
+          <tr><td>Electricity purchase</td><td>Purchased electric power</td><td>Emission factor</td><td>Purchased electricity</td>
+            <td class="num">0.0</td><td class="num">—</td><td class="num">26,310.0</td></tr>
+          <tr class="total"><td colspan="4">Totals (tCO₂eq)</td>
+            <td class="num">45.8</td><td class="num">22,220.7</td><td class="num">26,310.0</td></tr>
         </tbody>
       </table>
       <div class="huella anim" style="animation-delay:.25s">
-        <div class="n" data-count-dec="48530.7">48.530,7 tCO₂eq</div>
-        <div class="t"><strong>Sus emisiones superan el Nivel de Reporte Obligatorio</strong> (11.000 tCO₂eq).
-          Debe enviar su reporte anual de emisiones GEI.<span class="badge-alert">Reporte obligatorio</span></div>
+        <div class="n">48,530.7 tCO₂eq</div>
+        <div class="t"><strong>Your emissions exceed the Mandatory Reporting Level</strong> (11,000 tCO₂eq).
+          You must submit your annual GHG emissions report.<span class="badge-alert">Mandatory report</span></div>
       </div>
     </div>
-    <div class="caption anim" style="animation-delay:.35s"><span class="dot"></span>El sistema consolida directas · indirectas · biogénicas</div>
+    <div class="caption anim" style="animation-delay:.35s"><span class="dot"></span>The system consolidates direct · indirect · biogenic</div>
   </section>
 
-  <!-- 10 · constancia con QR + cierre (calcada del print document "Reporte" del ROE) -->
-  <section class="slide cert" data-audio="assets/audio/s10.mp3" id="finale">
+  <!-- 10 · certificate with QR + closing -->
+  <section class="slide cert" data-audio="assets/audio/en_s10.mp3" id="finale">
     <div class="certcard anim">
       <div class="certhead">
-        <img class="minlogo" src="assets/shots/logo-ambiente.png" alt="Ministerio de Ambiente y Desarrollo Sostenible">
+        <img class="minlogo" src="assets/shots/logo-ambiente.png" alt="Ministry of Environment and Sustainable Development">
         <div class="qrhead">
-          <img src="assets/shots/qr.png" alt="Código QR de verificación">
+          <img src="assets/shots/qr.png" alt="Verification QR code">
           <div class="code">CO-ROE-2025-ER6030</div>
         </div>
       </div>
       <div class="certmain">
-        <div class="fecha">Fecha del reporte: <strong>8 de julio de 2026</strong></div>
-        <p class="razon"><strong>Razón social: </strong>MANUFACTURAS EL ROBLE SAS</p>
-        <p class="nit"><strong>NIT: </strong>860.002.190 &nbsp;·&nbsp; <strong>Vigencia: </strong>2025</p>
-        <p class="intro">Este documento presenta los resultados de la cuantificación de las emisiones de
-          Gases de Efecto Invernadero (GEI) registradas en la Plataforma del Reporte Obligatorio de
-          Emisiones – ROE correspondientes a la vigencia 2025.</p>
+        <div class="fecha">Report date: <strong>July 8, 2026</strong></div>
+        <p class="razon"><strong>Company name: </strong>MANUFACTURAS EL ROBLE SAS</p>
+        <p class="nit"><strong>Tax ID (NIT): </strong>860.002.190 &nbsp;·&nbsp; <strong>Reporting year: </strong>2025</p>
+        <p class="intro">This document presents the results of the greenhouse gas (GHG) emissions
+          quantification registered on the Mandatory Emissions Report Platform – ROE for the 2025
+          reporting year.</p>
         <div class="huellarow">
-          <span>Para el periodo de referencia, se determinó una <strong>huella de carbono</strong> total de:</span>
-          <span class="hv">48.530,7 tCO₂eq</span>
+          <span>For the reference period, a total <strong>carbon footprint</strong> was determined of:</span>
+          <span class="hv">48,530.7 tCO₂eq</span>
         </div>
         <div class="totrow">
-          <div class="tot"><small>Total emisiones directas</small><b>22.220,7</b></div>
-          <div class="tot"><small>Total emisiones indirectas</small><b>26.310,0</b></div>
-          <div class="tot"><small>Total biogénicos CO₂</small><b>45,8</b></div>
+          <div class="tot"><small>Total direct emissions</small><b>22,220.7</b></div>
+          <div class="tot"><small>Total indirect emissions</small><b>26,310.0</b></div>
+          <div class="tot"><small>Total biogenic CO₂</small><b>45.8</b></div>
         </div>
         <table class="gases">
           <thead><tr><th>CO₂</th><th>CH₄</th><th>N₂O</th><th>HFC</th><th>PFC</th><th>SF₆</th><th>NF₃</th><th>tCO₂eq</th></tr></thead>
-          <tbody><tr><td>44.980,2</td><td>2.130,4</td><td>1.360,3</td><td>59,8</td><td>0,0</td><td>0,0</td><td>0,0</td><td><b>48.530,7</b></td></tr></tbody>
+          <tbody><tr><td>44,980.2</td><td>2,130.4</td><td>1,360.3</td><td>59.8</td><td>0.0</td><td>0.0</td><td>0.0</td><td><b>48,530.7</b></td></tr></tbody>
         </table>
-        <p class="metodo">El proceso de estimación de emisiones se realizó a partir de la información reportada
-          por la persona jurídica en el sistema, de acuerdo con las metodologías establecidas por el Panel
-          Intergubernamental de Cambio Climático (IPCC) y la normativa nacional vigente.</p>
+        <p class="metodo">Emissions were estimated from the information reported by the legal entity in
+          the system, following the methodologies established by the Intergovernmental Panel on Climate
+          Change (IPCC) and current national regulations.</p>
       </div>
       <div class="certfoot">
         <span>home-colombia.eregistrations.org</span>
-        <span>Ministerio de Ambiente · Reino de los Países Bajos · ONU Comercio y Desarrollo (UNCTAD)</span>
+        <span>Ministry of Environment · Kingdom of the Netherlands · UN Trade and Development (UNCTAD)</span>
       </div>
     </div>
   </section>
@@ -279,27 +265,27 @@
 
   <!-- controls -->
   <div class="ctrl">
-    <button id="firstBtn" title="Inicio">⏮</button>
-    <button id="prevBtn" title="Anterior">←</button>
-    <button id="playBtn">▶ Reproducir</button>
-    <button id="nextBtn" title="Siguiente">→</button>
-    <span id="counter">1 / 10</span>
+    <button id="firstBtn" title="Start">⏮</button>
+    <button id="prevBtn" title="Previous">←</button>
+    <button id="playBtn">▶ Play</button>
+    <button id="nextBtn" title="Next">→</button>
+    <span id="counter">1 / 11</span>
   </div>
 </div>
 
 <script>
 const NARR = [
-  "Durante años, medir y reportar las emisiones de mi empresa fue un trámite de papeles, correos y hojas de cálculo. Hoy Colombia tiene otra manera de hacerlo. Le presento el ROE: el Reporte Obligatorio de Emisiones del Ministerio de Ambiente.",
-  "El ROE es el registro donde las empresas reportamos cada año nuestras emisiones de gases de efecto invernadero. Durante 2025 el sitio está abierto en modo de prueba, sin compromiso. Desde 2026, reportar será obligatorio.",
-  "¿Quién debe reportar? Toda empresa cuyas emisiones superen las 11.000 toneladas de CO₂ equivalente al año. Si mi empresa no llega al umbral, igual puedo presentar mi autodeclaración voluntaria.",
-  "Todo pasa en un solo lugar. Un sitio oficial del gobierno de Colombia, del Ministerio de Ambiente y Desarrollo Sostenible, con asistencia telefónica si la necesito.",
-  "Ingreso con mi correo o mi NIT, o directamente con mi cuenta Gov.co. Un clic en «Inicie su reporte», y ya estoy adentro.",
-  "En «Mi cuenta» veo el historial completo de mis reportes: borradores y enviados, cada uno con su vigencia, su fecha y su estado. Nada se pierde.",
-  "El formulario me guía paso a paso. Elijo la vigencia y qué voy a reportar: solo emisiones, o emisiones y absorciones.",
-  "Registro cada fuente de emisión con menús que se abren en cascada: categoría, subcategoría, nivel, subnivel y variable. Por ejemplo: emisión directa, por combustión, en fuentes estacionarias, con diésel.",
-  "Yo solo indico mi dato de actividad: cuántos galones consumí en el año. El sistema trae los factores de emisión oficiales de Colombia y calcula por mí. Sin fórmulas, sin hojas de cálculo.",
-  "Al guardar mis fuentes, el sistema consolida todo el cálculo: emisiones directas, indirectas y biogénicas. Mi huella total: 48.530 toneladas de CO₂ equivalente. Supero con creces el umbral de 11.000. Este año, mi empresa debe reportar.",
-  "Envío mi reporte, y al instante recibo mi constancia oficial, con un código QR para verificar su autenticidad en línea. Esto es el ROE: reportar emisiones, fácil y en línea. Una iniciativa del Ministerio de Ambiente, con el apoyo del Reino de los Países Bajos y de ONU Comercio y Desarrollo."
+  "For years, measuring and reporting my company's emissions meant paperwork, emails, and spreadsheets. Today, Colombia has a better way. Meet the ROE: the Mandatory Emissions Report of the Ministry of Environment.",
+  "The ROE is the registry where companies report their greenhouse gas emissions every year. During 2025, the site is open in trial mode, with no obligation. From 2026, reporting becomes mandatory.",
+  "Who must report? Every company whose emissions exceed 11,000 tonnes of CO₂ equivalent per year. And if my company is below the threshold, I can still file a voluntary self-declaration.",
+  "Everything happens in one place. An official website of the Government of Colombia, run by the Ministry of Environment and Sustainable Development, with phone assistance if I need it.",
+  "I sign in with my email or my company tax ID, or directly with my Gov.co account. One click on «Start your report», and I'm in.",
+  "In «My account» I see the full history of my reports: drafts and submitted ones, each with its reporting year, date, and status. Nothing gets lost.",
+  "The form guides me step by step. I choose the reporting year and what I'm going to report: emissions only, or emissions and removals.",
+  "I register each emission source through cascading menus: category, subcategory, level, sublevel, and variable. For example: direct emission, from combustion, in stationary sources, using diesel.",
+  "I only enter my activity data: how many gallons I used during the year. The system pulls Colombia's official emission factors and does the math for me. No formulas, no spreadsheets.",
+  "When I save my sources, the system consolidates the whole calculation: direct, indirect, and biogenic emissions. My total footprint: 48,530 tonnes of CO₂ equivalent. Far above the 11,000 threshold. This year, my company must report.",
+  "I submit my report, and I instantly receive my official certificate, with a QR code to verify its authenticity online. This is the ROE: emissions reporting, easy and online. An initiative of the Ministry of Environment, supported by the Kingdom of the Netherlands and UN Trade and Development."
 ];
 
 const slides=[...document.querySelectorAll('.slide')];
@@ -316,7 +302,7 @@ function countUpIn(slide){
     const t0=performance.now(), dur=1400;
     (function tick(t){
       const k=Math.min(1,(t-t0)/dur), v=Math.round(target*(1-Math.pow(1-k,3)));
-      el.childNodes[0].nodeValue=v.toLocaleString('es-CO');
+      el.childNodes[0].nodeValue=v.toLocaleString('en-US');
       if(k<1) requestAnimationFrame(tick);
     })(t0);
     if(small) el.appendChild(small);
@@ -342,7 +328,7 @@ function speak(){
 }
 function go(n){ i=Math.max(0,Math.min(slides.length-1,n)); paint(); playing?speak():stopSeg(); }
 function adv(){ if(i<slides.length-1) go(i+1); else {playing=false; setPlayBtn(); stopSeg();} }
-function setPlayBtn(){ playBtn.textContent=playing?'⏸ Pausa':'▶ Reproducir'; }
+function setPlayBtn(){ playBtn.textContent=playing?'⏸ Pause':'▶ Play'; }
 function play(){ playing=!playing; setPlayBtn(); playing?speak():stopSeg(); }
 
 playBtn.onclick=play;
