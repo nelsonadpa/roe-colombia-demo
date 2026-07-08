@@ -30,16 +30,20 @@ dura exactamente lo que dura su narración y avanza al terminar.
 
 ## Voz
 
-Narración generada con Microsoft Edge neural TTS, un MP3 por slide:
+Narración generada con **ElevenLabs** (modelo `eleven_multilingual_v2`), un MP3 por slide,
+con la voz colombiana **"Catalina — Sunny and Engaging"** (voice ID `k7v2xzj8pZoayBVu9pvq`)
+en ambos idiomas — en inglés conserva su acento colombiano, como el demo de Uganda hizo
+con sus voces kenianas.
 
-- **Español:** voz colombiana **`es-CO-SalomeNeural`** (`assets/audio/s0..s10.mp3`)
-- **English:** voz **`en-US-AvaNeural`** (`assets/audio/en_s0..en_s10.mp3`)
+- Español: `assets/audio/s0..s10.mp3` · English: `assets/audio/en_s0..en_s10.mp3`
+- Respaldo sin API key: Microsoft edge-tts (`es-CO-SalomeNeural` / `en-US-AvaNeural`)
 
-Para regenerar un clip:
+Para regenerar un clip (requiere `ELEVENLABS_API_KEY`):
 
 ```bash
-uvx edge-tts --voice es-CO-SalomeNeural --rate "+8%" \
-  --text "..." --write-media assets/audio/sN.mp3
+curl -s -X POST "https://api.elevenlabs.io/v1/text-to-speech/k7v2xzj8pZoayBVu9pvq?output_format=mp3_44100_128" \
+  -H "xi-api-key: $ELEVENLABS_API_KEY" -H "Content-Type: application/json" \
+  -d '{"text":"...","model_id":"eleven_multilingual_v2"}' -o assets/audio/sN.mp3
 ```
 
 ## Pantallas

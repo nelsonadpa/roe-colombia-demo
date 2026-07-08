@@ -33,6 +33,10 @@
   /* concept slides */
   .slide.concept{flex-direction:column;align-items:center;justify-content:center;text-align:center;
     background:linear-gradient(160deg,#132a0b 0%,#1e4212 55%,#2c5a1e 100%);color:#fff;padding:6vh 8vw}
+  .slide.concept .bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .slide.concept .veil{position:absolute;inset:0;z-index:1;
+    background:linear-gradient(to top,rgba(10,22,5,.88) 0%,rgba(10,22,5,.45) 55%,rgba(10,22,5,.30) 100%)}
+  .slide.concept .kicker,.slide.concept h1,.slide.concept p.lead,.slide.concept .bignum{position:relative;z-index:2}
   .slide.concept .kicker{font-size:clamp(14px,1.6vw,19px);letter-spacing:.22em;text-transform:uppercase;color:#a5d47f;font-weight:700}
   .slide.concept h1{font-size:clamp(34px,5.4vw,72px);font-weight:900;line-height:1.08;margin:18px 0 14px;max-width:22ch}
   .slide.concept p.lead{font-size:clamp(16px,2vw,24px);color:#dcecd0;max-width:56ch;line-height:1.5}
@@ -131,6 +135,10 @@
 
   <!-- 0 · cover -->
   <section class="slide concept" data-audio="assets/audio/en_s0.mp3">
+    <video class="bgvid" autoplay muted loop playsinline poster="assets/shots/selva.jpg">
+      <source src="assets/shots/selva-loop.mp4" type="video/mp4">
+    </video>
+    <div class="veil"></div>
     <div class="kicker anim">Colombia · Ministry of Environment and Sustainable Development</div>
     <h1 class="anim" style="animation-delay:.12s">Mandatory Emissions<br>Report (ROE)</h1>
     <p class="lead anim" style="animation-delay:.24s">From spreadsheets and paper to a single online portal. An environmental manager shows how she reports her company's emissions today.</p>
