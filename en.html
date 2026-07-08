@@ -19,10 +19,13 @@
   .stage{position:fixed;inset:0;display:flex;flex-direction:column}
   #bar{position:absolute;top:0;left:0;height:4px;background:#8cc63f;width:0%;z-index:40;transition:width .45s ease}
 
-  .lang{position:fixed;top:14px;right:16px;z-index:70;font-weight:800;font-size:13px;
-    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;
-    border-radius:999px;padding:7px 16px;text-decoration:none;backdrop-filter:blur(8px)}
-  .lang:hover{background:rgba(255,255,255,.28)}
+  .lang{position:fixed;top:14px;right:16px;z-index:70;display:flex;gap:2px;
+    background:rgba(14,26,9,.55);border:1px solid rgba(255,255,255,.3);
+    border-radius:999px;padding:3px;backdrop-filter:blur(8px)}
+  .lang a{font-weight:800;font-size:13px;color:#dcecd0;text-decoration:none;
+    border-radius:999px;padding:6px 14px;line-height:1}
+  .lang a:hover{background:rgba(255,255,255,.18)}
+  .lang a.act{background:#8cc63f;color:#132a0b;pointer-events:none}
 
   .slide{display:none;position:absolute;inset:0;overflow:hidden}
   .slide.on{display:flex}
@@ -121,7 +124,10 @@
 <body>
 <div class="stage">
   <div id="bar"></div>
-  <a class="lang" href="./" title="Ver en español">ES</a>
+  <nav class="lang">
+    <a id="langLink" href="./" title="Ver en español">ES</a>
+    <a class="act">EN</a>
+  </nav>
 
   <!-- 0 · cover -->
   <section class="slide concept" data-audio="assets/audio/en_s0.mp3">
@@ -315,6 +321,8 @@ function paint(){
   bar.style.width=((i+1)/slides.length*100)+'%';
   subsT.textContent=NARR[i]||'';
   countUpIn(slides[i]);
+  history.replaceState(null,'','#'+i);
+  const ll=document.getElementById('langLink'); if(ll) ll.href='./#'+i;
 }
 function stopSeg(){ if(audio){audio.pause();audio=null;} clearTimeout(timer); setSpeak(false); }
 function speak(){
@@ -340,6 +348,7 @@ document.addEventListener('keydown',e=>{
   else if(e.key==='ArrowLeft') go(i-1);
   else if(e.key===' '){ e.preventDefault(); play(); }
 });
+i=Math.max(0,Math.min(slides.length-1,parseInt(location.hash.slice(1))||0));
 paint(); setPlayBtn();
 </script>
 </body>
