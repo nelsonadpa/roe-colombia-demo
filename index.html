@@ -97,35 +97,34 @@
   .huella .t{font-size:clamp(12px,1.4vw,15px);color:#3c4f2e;line-height:1.35}
   .badge-alert{display:inline-block;background:#b3541e;color:#fff;border-radius:6px;padding:2px 10px;font-weight:800;font-size:.85em;margin-left:6px}
 
-  /* certificate (slide 10) */
+  /* certificate (slide 10) — mirrors the real ROE "Reporte" print document */
   .slide.cert{flex-direction:column;align-items:center;justify-content:center;
-    background:linear-gradient(160deg,#132a0b 0%,#1e4212 55%,#2c5a1e 100%);padding:4vh 5vw 12vh}
-  .certcard{position:relative;width:min(880px,94vw);background:#fff;border-radius:18px;overflow:hidden;
+    background:linear-gradient(160deg,#132a0b 0%,#1e4212 55%,#2c5a1e 100%);padding:3vh 5vw 12vh}
+  .certcard{position:relative;width:min(860px,94vw);background:#fff;border-radius:14px;overflow:hidden;
     box-shadow:0 30px 80px rgba(0,0,0,.45)}
-  .certcard .band{height:10px;background:linear-gradient(90deg,#fcd116 0 33%,#003893 33% 66%,#ce1126 66% 100%)}
-  .certhead{display:flex;align-items:center;justify-content:space-between;padding:22px 34px 14px;border-bottom:1px solid #ecf2e4}
-  .certhead .min{font-weight:900;color:var(--green-dark);font-size:clamp(15px,1.9vw,21px);line-height:1.15}
-  .certhead .min small{display:block;font-weight:600;color:#69805a;font-size:.62em;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
-  .sello{width:74px;height:74px;border-radius:50%;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    background:radial-gradient(circle at 32% 28%,#8cc63f,#3d7a2a);color:#fff;font-weight:900;font-size:15px;letter-spacing:.04em;
-    box-shadow:inset 0 0 0 4px rgba(255,255,255,.35), 0 6px 16px rgba(44,90,30,.35)}
-  .sello small{font-weight:700;font-size:8.5px;opacity:.9;letter-spacing:.14em}
-  .certtitle{text-align:center;padding:20px 34px 6px}
-  .certtitle .k{font-size:11px;letter-spacing:.3em;color:#7d926d;font-weight:700;text-transform:uppercase}
-  .certtitle h2{font-size:clamp(19px,2.6vw,30px);font-weight:900;color:#1c2a12;margin-top:6px}
-  .certbody{display:grid;grid-template-columns:1fr auto;gap:20px;padding:16px 34px 24px;align-items:center}
-  .certrows{display:grid;grid-template-columns:auto 1fr;gap:7px 20px;font-size:clamp(12px,1.5vw,15.5px)}
-  .certrows dt{color:#7d926d;font-weight:600;white-space:nowrap}
-  .certrows dd{color:#1c2a12;font-weight:800}
-  .certrows dd.ok{color:var(--green);display:flex;align-items:center;gap:8px}
-  .certrows dd.ok::before{content:"✓";display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--green);
-    color:#fff;align-items:center;justify-content:center;font-size:12px}
-  .qrbox{text-align:center}
-  .qrbox img{width:clamp(110px,14vw,150px);display:block;border:1px solid #e3ecd8;border-radius:10px;padding:6px;background:#fff}
-  .qrbox .v{font-size:10.5px;color:#7d926d;max-width:160px;margin:8px auto 0;line-height:1.35}
-  .qrbox .code{font-family:ui-monospace,monospace;font-size:11px;color:#3c4f2e;font-weight:700;letter-spacing:.06em;margin-top:4px}
-  .certfoot{padding:12px 34px;background:#f7faf3;border-top:1px solid #ecf2e4;display:flex;justify-content:space-between;
-    font-size:10.5px;color:#8aa07a;letter-spacing:.04em}
+  .certhead{display:flex;align-items:flex-start;justify-content:space-between;padding:22px 36px 8px}
+  .minlogo{width:clamp(140px,19vw,190px);height:auto}
+  .qrhead{text-align:center}
+  .qrhead img{width:clamp(80px,9.5vw,104px);display:block;margin:0 auto}
+  .qrhead .code{font-family:ui-monospace,monospace;font-size:10px;color:#3c4f2e;font-weight:700;letter-spacing:.05em;margin-top:4px}
+  .certmain{padding:2px 36px 14px;color:#1c2a12}
+  .certmain .fecha{font-size:clamp(11px,1.3vw,13.5px);color:#5c7050;margin-bottom:10px}
+  .certmain .razon{font-size:clamp(15px,2vw,20px);margin-bottom:2px}
+  .certmain .nit{font-size:clamp(13px,1.7vw,17px);color:#4d4d4d;margin-bottom:10px}
+  .certmain .intro,.certmain .metodo{font-size:clamp(10.5px,1.3vw,13px);text-align:justify;color:#39462f;line-height:1.45}
+  .certmain .metodo{margin-top:10px;color:#69805a}
+  .huellarow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--green-soft);
+    border-radius:10px;padding:10px 16px;margin:12px 0;font-size:clamp(11px,1.4vw,14px)}
+  .huellarow .hv{font-size:clamp(19px,2.6vw,28px);font-weight:900;color:var(--green-dark);margin-left:auto;white-space:nowrap}
+  .totrow{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+  .tot{flex:1;min-width:140px;border:1px solid #e1ead4;border-radius:10px;padding:8px 14px;background:#fbfdf8}
+  .tot small{display:block;color:#7d926d;font-size:clamp(9.5px,1.1vw,11.5px);font-weight:600}
+  .tot b{font-size:clamp(15px,1.9vw,20px);font-variant-numeric:tabular-nums}
+  table.gases{width:100%;border-collapse:collapse;font-size:clamp(10px,1.2vw,12.5px);font-variant-numeric:tabular-nums}
+  table.gases th{background:#f2f7ec;color:#4a5d3c;padding:6px 8px;border:1px solid #e1ead4;font-weight:700;text-align:center}
+  table.gases td{padding:6px 8px;border:1px solid #e9f0df;text-align:center}
+  .certfoot{padding:10px 36px;background:#f7faf3;border-top:1px solid #ecf2e4;display:flex;justify-content:space-between;gap:10px;
+    font-size:10px;color:#8aa07a;letter-spacing:.04em;flex-wrap:wrap}
 </style>
 </head>
 <body>
@@ -207,17 +206,17 @@
         </tr></thead>
         <tbody>
           <tr><td>Combustión</td><td>Fuentes Estacionarias</td><td>Factor de emisión</td><td>Diésel o ACPM (sin mezcla)</td>
-            <td class="num">0,0</td><td class="num">4.820,5</td><td class="num">—</td></tr>
+            <td class="num">0,0</td><td class="num">18.240,5</td><td class="num">—</td></tr>
           <tr><td>Combustión</td><td>Fuentes Móviles</td><td>Factor de emisión</td><td>Gasolina Motor E10</td>
-            <td class="num">12,4</td><td class="num">1.240,2</td><td class="num">—</td></tr>
+            <td class="num">45,8</td><td class="num">3.980,2</td><td class="num">—</td></tr>
           <tr><td>Adquisición de Electricidad</td><td>Energía Eléctrica Comprada</td><td>Factor de emisión</td><td>Electricidad adquirida</td>
-            <td class="num">0,0</td><td class="num">—</td><td class="num">8.460,0</td></tr>
+            <td class="num">0,0</td><td class="num">—</td><td class="num">26.310,0</td></tr>
           <tr class="total"><td colspan="4">Totales (tCO₂eq)</td>
-            <td class="num">12,4</td><td class="num">6.060,7</td><td class="num">8.460,0</td></tr>
+            <td class="num">45,8</td><td class="num">22.220,7</td><td class="num">26.310,0</td></tr>
         </tbody>
       </table>
       <div class="huella anim" style="animation-delay:.25s">
-        <div class="n">14.520,7 tCO₂eq</div>
+        <div class="n" data-count-dec="48530.7">48.530,7 tCO₂eq</div>
         <div class="t"><strong>Sus emisiones superan el Nivel de Reporte Obligatorio</strong> (11.000 tCO₂eq).
           Debe enviar su reporte anual de emisiones GEI.<span class="badge-alert">Reporte obligatorio</span></div>
       </div>
@@ -225,33 +224,39 @@
     <div class="caption anim" style="animation-delay:.35s"><span class="dot"></span>El sistema consolida directas · indirectas · biogénicas</div>
   </section>
 
-  <!-- 10 · constancia con QR + cierre -->
+  <!-- 10 · constancia con QR + cierre (calcada del print document "Reporte" del ROE) -->
   <section class="slide cert" data-audio="assets/audio/s10.mp3" id="finale">
     <div class="certcard anim">
-      <div class="band"></div>
       <div class="certhead">
-        <div class="min">Ministerio de Ambiente y Desarrollo Sostenible<small>República de Colombia · Gov.co</small></div>
-        <div class="sello">ROE<small>2025 ✓</small></div>
-      </div>
-      <div class="certtitle">
-        <div class="k">Constancia oficial</div>
-        <h2>Reporte Obligatorio de Emisiones GEI</h2>
-      </div>
-      <div class="certbody">
-        <dl class="certrows">
-          <dt>Empresa</dt><dd>MANUFACTURAS EL ROBLE SAS</dd>
-          <dt>NIT</dt><dd>860.002.190</dd>
-          <dt>Radicado</dt><dd>ER-6030</dd>
-          <dt>Vigencia</dt><dd>2025</dd>
-          <dt>Huella de carbono total</dt><dd>14.520,7 tCO₂eq</dd>
-          <dt>Fecha de presentación</dt><dd>8 de julio de 2026</dd>
-          <dt>Estado</dt><dd class="ok">Reporte presentado</dd>
-        </dl>
-        <div class="qrbox">
+        <img class="minlogo" src="assets/shots/logo-ambiente.png" alt="Ministerio de Ambiente y Desarrollo Sostenible">
+        <div class="qrhead">
           <img src="assets/shots/qr.png" alt="Código QR de verificación">
-          <div class="v">Verifique la autenticidad de este documento escaneando el código QR</div>
           <div class="code">CO-ROE-2025-ER6030</div>
         </div>
+      </div>
+      <div class="certmain">
+        <div class="fecha">Fecha del reporte: <strong>8 de julio de 2026</strong></div>
+        <p class="razon"><strong>Razón social: </strong>MANUFACTURAS EL ROBLE SAS</p>
+        <p class="nit"><strong>NIT: </strong>860.002.190 &nbsp;·&nbsp; <strong>Vigencia: </strong>2025</p>
+        <p class="intro">Este documento presenta los resultados de la cuantificación de las emisiones de
+          Gases de Efecto Invernadero (GEI) registradas en la Plataforma del Reporte Obligatorio de
+          Emisiones – ROE correspondientes a la vigencia 2025.</p>
+        <div class="huellarow">
+          <span>Para el periodo de referencia, se determinó una <strong>huella de carbono</strong> total de:</span>
+          <span class="hv">48.530,7 tCO₂eq</span>
+        </div>
+        <div class="totrow">
+          <div class="tot"><small>Total emisiones directas</small><b>22.220,7</b></div>
+          <div class="tot"><small>Total emisiones indirectas</small><b>26.310,0</b></div>
+          <div class="tot"><small>Total biogénicos CO₂</small><b>45,8</b></div>
+        </div>
+        <table class="gases">
+          <thead><tr><th>CO₂</th><th>CH₄</th><th>N₂O</th><th>HFC</th><th>PFC</th><th>SF₆</th><th>NF₃</th><th>tCO₂eq</th></tr></thead>
+          <tbody><tr><td>44.980,2</td><td>2.130,4</td><td>1.360,3</td><td>59,8</td><td>0,0</td><td>0,0</td><td>0,0</td><td><b>48.530,7</b></td></tr></tbody>
+        </table>
+        <p class="metodo">El proceso de estimación de emisiones se realizó a partir de la información reportada
+          por la persona jurídica en el sistema, de acuerdo con las metodologías establecidas por el Panel
+          Intergubernamental de Cambio Climático (IPCC) y la normativa nacional vigente.</p>
       </div>
       <div class="certfoot">
         <span>home-colombia.eregistrations.org</span>
@@ -287,7 +292,7 @@ const NARR = [
   "El formulario me guía paso a paso. Elijo la vigencia y qué voy a reportar: solo emisiones, o emisiones y absorciones.",
   "Registro cada fuente de emisión con menús que se abren en cascada: categoría, subcategoría, nivel, subnivel y variable. Por ejemplo: emisión directa, por combustión, en fuentes estacionarias, con diésel.",
   "Yo solo indico mi dato de actividad: cuántos galones consumí en el año. El sistema trae los factores de emisión oficiales de Colombia y calcula por mí. Sin fórmulas, sin hojas de cálculo.",
-  "Al guardar mis fuentes, el sistema consolida todo el cálculo: emisiones directas, indirectas y biogénicas. Mi huella total: 14.520 toneladas de CO₂ equivalente. Supero el umbral de 11.000. Este año, mi empresa debe reportar.",
+  "Al guardar mis fuentes, el sistema consolida todo el cálculo: emisiones directas, indirectas y biogénicas. Mi huella total: 48.530 toneladas de CO₂ equivalente. Supero con creces el umbral de 11.000. Este año, mi empresa debe reportar.",
   "Envío mi reporte, y al instante recibo mi constancia oficial, con un código QR para verificar su autenticidad en línea. Esto es el ROE: reportar emisiones, fácil y en línea. Una iniciativa del Ministerio de Ambiente, con el apoyo del Reino de los Países Bajos y de ONU Comercio y Desarrollo."
 ];
 
